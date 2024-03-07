@@ -59,8 +59,12 @@ def single_pretty_print() -> None:
     example = Markdown(f"{rules}")
     console.print(example)
     for i in links:
-        further_reading = Markdown(f" [Further reading]({i})")
-        console.print(further_reading)
+        further_reading = i.split("#")
+        title = further_reading[-1]
+        title = title.title()
+        title = title.replace("-", " ")
+        link = Markdown(f"[{title}]({i})")
+        console.print(link)
 
 
 if args.single_json:
